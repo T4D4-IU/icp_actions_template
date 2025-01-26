@@ -17,6 +17,10 @@ jobs:
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
 
+      # WebAssemblyターゲットの追加
+      - name: Add wasm32 target
+        run: rustup target add wasm32-unknown-unknown
+
       # Clippyによるリントチェック
       - name: Lint with Clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
@@ -29,6 +33,18 @@ jobs:
       - name: Run Tests
         run: cargo test --all --verbose
 
-      # リリースビルド
-      - name: Build
-        run: cargo build --release
+      # DFXのセットアップ
+      - name: Install DFX
+        run: sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+
+      # DFXのバージョン確認
+      - name: Check DFX version
+        run: dfx --version
+
+      # ローカルネットワークの起動
+      - name: Start DFX network
+        run: dfx start --clean --background
+
+      # DFXのデプロイ
+      - name: Deploy with DFX
+        run: dfx deploy
