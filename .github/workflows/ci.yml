@@ -35,7 +35,9 @@ jobs:
 
       # DFXのセットアップ
       - name: Install DFX
-        run: sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+        env:
+          DFX_VERSION: latest
+        run: sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)" < /dev/null
 
       # DFXのバージョン確認
       - name: Check DFX version
