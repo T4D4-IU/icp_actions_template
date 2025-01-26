@@ -48,3 +48,9 @@ jobs:
       # DFXのデプロイ
       - name: Deploy with DFX
         run: dfx deploy
+
+      # デプロイしたキャニスターの関数を呼び出してテストする際はココに追加
+
+      # DFXの停止
+      - name: Stop DFX network
+        run: dfx stop
