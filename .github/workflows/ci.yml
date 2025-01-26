@@ -2,16 +2,16 @@ name: Rust CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
       # リポジトリのソースコードをチェックアウト
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Rustのセットアップ（Toolchainなどを指定可能）
       - name: Set up Rust
