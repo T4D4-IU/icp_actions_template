@@ -5,7 +5,5 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: |
-      sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-      cargo build
+  - init: cargo build
     command: cargo watch -x run
