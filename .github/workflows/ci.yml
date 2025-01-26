@@ -1,0 +1,34 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # リポジトリのソースコードをチェックアウト
+      - uses: actions/checkout@v3
+
+      # Rustのセットアップ（Toolchainなどを指定可能）
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      # Clippyによるリントチェック
+      - name: Lint with Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      # フォーマットチェック
+      - name: Check code formatting
+        run: cargo fmt --all -- --check
+
+      # テスト実行
+      - name: Run Tests
+        run: cargo test --all --verbose
+
+      # リリースビルド
+      - name: Build
+        run: cargo build --release
