@@ -1,5 +1,6 @@
 # ICP Actions Template
 [![Rust CI](https://github.com/T4D4-IU/icp_actions_template/actions/workflows/ci.yml/badge.svg)](https://github.com/T4D4-IU/icp_actions_template/actions/workflows/ci.yml)
+
 RustでICPのプロジェクトを作成する為のGitHub Actionsテンプレートです。
 Rustのコードのリント、フォーマット、テストを行った後にDFXを使ってデプロイが可能かどうかを確認します。
 
