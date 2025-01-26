@@ -35,12 +35,7 @@ jobs:
 
       # DFXのセットアップ
       - name: Install DFX
-        env:
-          DFX_VERSION: 0.24.3 # 現在の最新バージョン(本当はlatestとしたかった)
-        run: |
-          curl -LO https://github.com/dfinity/sdk/releases/download/$DFX_VERSION/dfx-$DFX_VERSION-x86_64-linux.tar.gz
-          tar xzf dfx-$DFX_VERSION-x86_64-linux.tar.gz -C /home/runner/.local/share/dfx
-          export PATH=/home/runner/.local/share/dfx:$PATH
+        uses: dfinity/setup-dfx@main
 
       # DFXのバージョン確認
       - name: Check DFX version
